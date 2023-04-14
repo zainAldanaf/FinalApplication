@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80D1D9F4"
-    tools:context=".Patient.Client_login">
+    tools:context=".Doctor.DoctorLogin">
 
     <TextView
         android:id="@+id/textView7"
@@ -27,73 +27,83 @@
         android:id="@+id/text"
         android:layout_width="274dp"
         android:layout_height="44dp"
+        android:layout_marginEnd="55dp"
         android:gravity="center"
         android:text="يرجى التسجيل للمتابعة"
-        android:textColor="@color/blue"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.289" />
 
     <EditText
-        android:id="@+id/emailLogin"
-        android:layout_width="340dp"
-        android:layout_height="77dp"
+        android:id="@+id/emailLogin2"
+        android:layout_width="347dp"
+        android:layout_height="55dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="36dp"
         android:ems="10"
+        android:background="@drawable/textfeild"
+
         android:hint="البريد الالكتروني:"
-        android:drawableStart="@drawable/email"
         android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.418" />
 
     <EditText
-        android:id="@+id/passLogin"
+        android:id="@+id/passLogin2"
         android:layout_width="347dp"
-        android:layout_height="75dp"
+        android:layout_height="55dp"
+
+        android:background="@drawable/textfeild"
+        android:drawableStart="@drawable/password"
         android:ems="10"
         android:gravity="right"
         android:hint="كلمة المرور"
         android:inputType="textPassword"
-        android:drawableStart="@drawable/password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/logindoctor"
         android:layout_width="283dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="204dp"
         android:backgroundTint="@color/blue"
         android:text="تسجيل!"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/dont_have_account"
-        android:layout_width="233dp"
-        android:layout_height="29dp"
-        android:layout_marginBottom="108dp"
+        android:id="@+id/donthaveAccount2"
+        android:layout_width="227dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="152dp"
         android:gravity="center"
-        android:text="ليس لديك حساب!"
+        android:text="ليس لديك حساب !"
         android:textColor="@color/blue"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

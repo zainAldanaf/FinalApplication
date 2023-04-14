@@ -56,6 +56,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/doctorCard"
         android:layout_width="370dp"
         android:layout_height="134dp"
         app:cardBackgroundColor="#4584AA"

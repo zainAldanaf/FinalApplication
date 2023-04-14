@@ -3,10 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/drawable-v24/baseline_add_24.xml" value="0.1205" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/drawable-v24/buttonshape.xml" value="0.243" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.243" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/drawable-v24/item_selected.xml" value="0.243" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/drawable-v24/textfeild.xml" value="0.243" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_add_topics_screen.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_choose_screen.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_client_login.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_client_registration.xml" value="0.264" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_doctor_home.xml" value="0.1" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_doctor_login.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_doctor_registration.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_doctor_sign.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_home_screen.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/fragment_chat.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/fragment_profile.xml" value="0.26197916666666665" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/splash_screen.xml" value="0.264" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/menu/icon_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

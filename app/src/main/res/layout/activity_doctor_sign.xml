@@ -5,125 +5,141 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#809EA8C8"
-    tools:context=".Patient.Client_registration">
+    tools:context=".Doctor.DoctorSign">
 
 
     <EditText
-        android:id="@+id/addressTxt"
+        android:id="@+id/addressTxt2"
         android:layout_width="349dp"
         android:layout_height="54dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/textfeild"
+        android:drawableStart="@drawable/location"
         android:ems="10"
         android:hint="العنوان:"
-        android:drawableStart="@drawable/location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.391" />
 
     <EditText
-        android:id="@+id/nameTxt"
+        android:id="@+id/nameTxt2"
         android:layout_width="349dp"
+        android:background="@drawable/textfeild"
         android:layout_height="53dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/name"
         android:ems="10"
         android:hint="الاسم كامل:"
-        android:drawableStart="@drawable/name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.187" />
+        app:layout_constraintVertical_bias="0.196" />
 
     <EditText
-        android:id="@+id/birthTxt"
+        android:id="@+id/birthTxt2"
         android:layout_width="348dp"
         android:layout_height="50dp"
+        android:background="@drawable/textfeild"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/calender"
         android:ems="10"
         android:hint="تاريخ الميلاد:"
-        android:drawableStart="@drawable/calender"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.651"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.29" />
 
     <EditText
-        android:id="@+id/emailTxt"
+        android:id="@+id/emailTxt2"
         android:layout_width="352dp"
         android:layout_height="58dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/email"
         android:ems="10"
+        android:background="@drawable/textfeild"
         android:hint="البريد الالكتروني:"
         android:inputType="textEmailAddress"
-        android:drawableStart="@drawable/email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.717"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
     <EditText
-        android:id="@+id/poneTxt"
-        android:layout_width="350dp"
-        android:layout_height="57dp"
-        android:ems="10"
-        android:gravity="right"
-        android:hint="رقم الهاتف:"
-        android:inputType="phone"
+        android:id="@+id/ponetxt2"
+        android:layout_width="352dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="20dp"
         android:drawableStart="@drawable/phone"
+        android:ems="10"
+        android:hint="رقم الهاتف:"
+        android:background="@drawable/textfeild"
+
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.618" />
+        app:layout_constraintVertical_bias="0.61" />
 
     <EditText
-        android:id="@+id/passTxt"
+        android:id="@+id/confirmPass2"
         android:layout_width="353dp"
         android:layout_height="53dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/password"
         android:ems="10"
         android:gravity="right"
-        android:hint="كلمة السر"
+        android:hint=" تأكيد كلمة السر"
+        android:background="@drawable/textfeild"
         android:inputType="textPassword"
-        android:drawableStart="@drawable/password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.607"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
+        app:layout_constraintVertical_bias="0.836" />
 
     <EditText
-        android:id="@+id/confirmPass"
+        android:id="@+id/password2"
         android:layout_width="349dp"
         android:layout_height="54dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/password"
         android:ems="10"
         android:gravity="right"
-        android:hint="تأكيد كلمة السر:"
+        android:hint=" كلمة السر:"
         android:inputType="textPassword"
-        android:drawableStart="@drawable/password"
+        android:background="@drawable/textfeild"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintHorizontal_bias="0.809"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.726" />
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/register2"
         android:layout_width="271dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/blue"
         android:text="تسجيل!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -134,6 +150,7 @@
         android:gravity="right"
         android:text="تسجيل عضوية جديدة"
         android:textColor="@color/blue"
+        android:layout_marginEnd="66dp"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,23 +166,29 @@
         android:text="الرجاء ملئ بيانات النموذج التالي"
         android:textColor="@color/blue"
         android:textSize="16sp"
+        android:layout_marginEnd="66dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/dont_have_account"
-        android:layout_width="233dp"
-        android:layout_height="29dp"
-        android:layout_marginBottom="12dp"
+        android:id="@+id/haveAccount2"
+        android:layout_width="224dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:text="لديك حساب بالفعل!"
         android:textColor="@color/blue"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

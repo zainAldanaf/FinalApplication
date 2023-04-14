@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Doctor.AddTopicsScreen">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="286dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center_vertical"
+        android:text="لاضافة بيانات جديدة .."
+        android:textColor="@color/blue"
+        android:textDirection="rtl"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/choose_image"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="56dp"
+        android:text="اضغط لاختيار صورة "
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <EditText
+        android:id="@+id/topic_address"
+        android:layout_width="310dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="العنوان"
+        android:background="@drawable/textfeild"
+        android:textDirection="rtl"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/blue"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_add" />
+
+    <EditText
+        android:id="@+id/topic_details"
+        android:layout_width="311dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="الوصف"
+        android:background="@drawable/textfeild"
+        android:textSize="20sp"
+        android:textDirection="rtl"
+        android:textColorHint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topic_address" />
+
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="170dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="15dp"
+        android:text="اضافة"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <ImageView
+        android:id="@+id/image_add"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toEndOf="@+id/choose_image"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible"
+        android:layout_marginEnd="171dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topic_details" />
+</androidx.constraintlayout.widget.ConstraintLayout>

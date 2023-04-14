@@ -14,10 +14,13 @@
         android:theme="@style/Theme.FinalApplication"
         tools:targetApi="31">
         <activity
-            android:name=".Client_login"
+            android:name=".Patient.Client_login"
             android:exported="false" />
         <activity
-            android:name=".Client_registration"
+            android:name=".Patient.HomeScreen"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.Client_registration"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
