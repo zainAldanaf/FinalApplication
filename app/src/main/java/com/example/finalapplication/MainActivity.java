@@ -32,7 +32,7 @@ CardView patientCard, doctorCard;
         doctorCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Client_registration.class));
+                startActivity(new Intent(MainActivity.this, DoctorSign.class));
 
             }
         });

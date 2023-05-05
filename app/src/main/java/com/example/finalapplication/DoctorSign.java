@@ -1,4 +1,4 @@
-package com.example.finalapplication.Doctor;
+package com.example.finalapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,18 +14,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalapplication.Doctor.DoctorLogin;
+import com.example.finalapplication.Module.doctorModule;
 import com.example.finalapplication.Patient.Client_login;
-import com.example.finalapplication.PationtsModule.PationtsModule;
-import com.example.finalapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DoctorSign extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
     ProgressDialog progressDialog;
     Button Sign_btn;
     EditText fullname;
@@ -33,7 +38,6 @@ public class DoctorSign extends AppCompatActivity {
     EditText address1;
     EditText emailaddress;
     TextView haveAccount;
-
     EditText phone_number;
     EditText pass;
     EditText confirmpass;
@@ -51,63 +55,61 @@ public class DoctorSign extends AppCompatActivity {
         phone_number = findViewById(R.id.ponetxt2);
         pass = findViewById(R.id.password2);
         confirmpass = findViewById(R.id.confirmPass2);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Doctors");
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        progressDialog = new ProgressDialog(this);
 
-        haveAccount=findViewById(R.id.haveAccount2);
-        Sign_btn.setOnClickListener(view ->{
-            createUser();
+
+        progressDialog = new ProgressDialog(this);
+        haveAccount = findViewById(R.id.haveAccount2);
+        Sign_btn.setOnClickListener(view -> {
+            createDoctor();
         });
 
         haveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DoctorSign.this, Client_login.class));
+                startActivity(new Intent(DoctorSign.this, DoctorLogin.class));
 
             }
         });
     }
 
-    private void createUser(){
+    private void createDoctor() {
+        String name = fullname.getText().toString();
         String email = emailaddress.getText().toString();
         String password = pass.getText().toString();
         String address = address1.getText().toString();
-        String birthdate= birth_date.getText().toString();
-        String name = fullname.getText().toString();
+        String birthdate = birth_date.getText().toString();
         String confrimpassword = confirmpass.getText().toString();
         String phone = phone_number.getText().toString();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             emailaddress.setError("Email cannot be empty");
             emailaddress.requestFocus();
-        }else if (TextUtils.isEmpty(password)){
-            pass.setError("Password cannot be empty");
+        } else if (TextUtils.isEmpty(name)) {
+            pass.setError("name cannot be empty");
             pass.requestFocus();
-        }else if (TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             fullname.setError("Password cannot be empty");
             fullname.requestFocus();
-        }else if (TextUtils.isEmpty(password)){
-            address1.setError("Password cannot be empty");
+        } else if (TextUtils.isEmpty(birthdate)) {
+            address1.setError("birthdate cannot be empty");
             address1.requestFocus();
-        }else if (TextUtils.isEmpty(password)){
-            phone_number.setError("Password cannot be empty");
-            phone_number.requestFocus();
-        }else if (TextUtils.isEmpty(password)){
-            confirmpass.setError("Password cannot be empty");
-            confirmpass.requestFocus();
-        }else{
-            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        } else {
+
+            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(DoctorSign.this, "User registered successfully", Toast.LENGTH_SHORT).show();
-                     //   startActivity(new Intent(PationtSign.this, PationtLogin.class));
-                        firebaseFirestore.collection("Doctors").document(FirebaseAuth.getInstance().getUid()).set(
-                                new PationtsModule(name,address,birthdate,email,phone,password,confrimpassword)
-                        );
+                    if (task.isSuccessful()) {
+                        doctorModule doctorModule = new doctorModule(name, address, birthdate, email, phone, password, confrimpassword);
+                        databaseReference.child(name).setValue(doctorModule);
+                        Intent intent = new Intent(DoctorSign.this, DoctorLogin.class);
+                        startActivity(intent);
                         progressDialog.cancel();
-                    }else{
+                    } else {
                         Toast.makeText(DoctorSign.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.cancel();
                     }
@@ -115,5 +117,5 @@ public class DoctorSign extends AppCompatActivity {
             });
         }
     }
-
 }
+

@@ -17,6 +17,18 @@
             android:name=".Patient.Client_login"
             android:exported="false" />
         <activity
+            android:name=".DoctorSign"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.DoctorLogin"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.DoctorHome"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.AddTopicsScreen"
+            android:exported="false" />
+        <activity
             android:name=".Patient.HomeScreen"
             android:exported="false" />
         <activity

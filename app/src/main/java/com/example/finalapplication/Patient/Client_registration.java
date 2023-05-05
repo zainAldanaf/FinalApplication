@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.finalapplication.PationtsModule.PationtsModule;
+import com.example.finalapplication.Module.PationtsModule;
+import com.example.finalapplication.Module.doctorModule;
 import com.example.finalapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Client_registration extends AppCompatActivity {
@@ -25,6 +28,8 @@ public class Client_registration extends AppCompatActivity {
     TextView haveAccount;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     ProgressDialog progressDialog;
     EditText fullname;
     EditText birth_date;
@@ -48,8 +53,12 @@ public class Client_registration extends AppCompatActivity {
         phone_number = findViewById(R.id.poneTxt);
         pass = findViewById(R.id.passTxt);
         confirmpass = findViewById(R.id.confirmPass);
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Patients");
+
         progressDialog = new ProgressDialog(this);
         Sign_btn = findViewById(R.id.register);
         haveAccount = findViewById(R.id.dont_have_account);
@@ -96,11 +105,11 @@ public class Client_registration extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
+                        PationtsModule pationtsModule = new PationtsModule(name, address, birthdate, email, phone, password, confrimpassword);
+                        databaseReference.child(name).setValue(pationtsModule);
                         Toast.makeText(Client_registration.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Client_registration.this, Client_login.class));
-                        firebaseFirestore.collection("Patients").document(FirebaseAuth.getInstance().getUid()).set(
-                                new PationtsModule(name,address,birthdate,email,phone,password,confrimpassword)
-                        );
+
                     }else{
                         Toast.makeText(Client_registration.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

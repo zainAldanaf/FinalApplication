@@ -1,9 +1,9 @@
-package com.example.finalapplication.PationtsModule;
+package com.example.finalapplication.Module;
 
-public class PationtsModule {
+public class doctorModule {
     private String fullname,birthdate,address,email,phone,password,confirmPass;
 
-    public PationtsModule(String fullname, String address, String birthdate, String email, String phone, String password, String confirmPass) {
+    public doctorModule(String fullname, String address, String birthdate, String email, String phone, String password, String confirmPass) {
         this.fullname = fullname;
         this.address = address;
         this.birthdate = birthdate;
@@ -12,7 +12,7 @@ public class PationtsModule {
         this.password = password;
         this.confirmPass = confirmPass;
     }
-    public  PationtsModule() {
+    public  doctorModule() {
 
     }
 

@@ -23,6 +23,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,6 +37,8 @@ import java.util.Objects;
 public class ProfileFragment extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    DatabaseReference ref;
+    FirebaseDatabase database;
     FirebaseUser firebaseAuth;
     TextView fullname;
     TextView birthdate;
@@ -39,7 +46,7 @@ public class ProfileFragment extends Fragment {
     TextView emailaddress;
     TextView phone_number;
     String uid;
-    TextView pass;
+    TextView password;
      private FragmentProfileBinding binding;
 
 
@@ -51,13 +58,16 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         uid = firebaseAuth.getUid().toString();
         Log.e(TAG, uid);
-        fullname = binding.profilename;
 
+        fullname = binding.profilename;
         birthdate = binding.birthDateprofile;
         address1 = binding.addressprofile;
         emailaddress = binding.emailprofile;
         phone_number = binding.phoneprofile;
-        pass = binding.passwordProfile;
+        password = binding.passwordProfile;
+
+         database = FirebaseDatabase.getInstance();
+         ref = database.getReference("Patients");
 
         getProfile();
 
@@ -65,8 +75,44 @@ public class ProfileFragment extends Fragment {
     }
 
     public  void getProfile(){
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                // Iterate through the data and retrieve the values
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String name = snapshot.child("fullname").getValue(String.class);
+                    String email = snapshot.child("email").getValue(String.class);
+                    String address = snapshot.child("address").getValue(String.class);
+                    String phone = snapshot.child("phone").getValue(String.class);
+                    String birthdate2 = snapshot.child("birthdate").getValue(String.class);
+                    String pass = snapshot.child("password").getValue(String.class);
 
-        db.collection("Patients").document(uid.toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    fullname.setText(name);
+                    emailaddress.setText(email);
+                    address1.setText(address);
+                    phone_number.setText(phone);
+                    birthdate.setText(birthdate2);
+                    password.setText(pass);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+    }
+
+}
+
+
+
+/*  db.collection("Patients").document(uid.toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                if (documentSnapshot.exists()){
@@ -94,7 +140,4 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getContext(), "failed!!!!!!!!!!!!!", Toast.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-}
+*/
