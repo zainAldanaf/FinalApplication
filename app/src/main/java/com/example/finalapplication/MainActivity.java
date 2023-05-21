@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.finalapplication.Doctor.DoctorSign;
 import com.example.finalapplication.Patient.Client_registration;
 
 public class MainActivity extends AppCompatActivity {

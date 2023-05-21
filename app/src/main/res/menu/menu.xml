@@ -5,13 +5,18 @@
         android:icon="@drawable/baseline_person_pin_24"/>
 
 
-
     <item android:title="المحادثة"
         android:id="@+id/chat"
         android:icon="@drawable/baseline_chat_24"
         />
 
+
     <item android:title="الصفحة الرئيسية"
         android:id="@+id/home"
         android:icon="@drawable/baseline_home_24"/>
+
+    <item android:title=" اضافة موضوع"
+        android:id="@+id/addTopic"
+        android:icon="@drawable/baseline_home_24"/>
+
 </menu>
