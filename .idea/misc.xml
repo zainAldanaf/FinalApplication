@@ -12,6 +12,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/drawable/text_round.xml" value="0.109" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/drawable/textfield.xml" value="0.104" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_add_topics_screen.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_chat_doctor.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_choose_screen.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_client_login.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_client_registration.xml" value="0.264" />
@@ -25,6 +26,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_home_screen.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/fragment_chat.xml" value="0.25" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/fragment_contact2.xml" value="0.2359375" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/fragment_profile.xml" value="0.26197916666666665" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/FinalApplication/app/src/main/res/layout/show_doc_item.xml" value="0.24895833333333334" />

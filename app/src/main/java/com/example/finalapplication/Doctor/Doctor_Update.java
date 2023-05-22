@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.finalapplication.Module.showDoctor;
 import com.example.finalapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,84 +21,55 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Doctor_Update extends AppCompatActivity {
+
     EditText namee;
     EditText detailss;
     Button edit_img;
     Button edit_video;
     Button edit_edit;
 
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private FirebaseAuth firebaseAuth;
-    private String currentid;
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_update);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        namee=findViewById(R.id.edittopic_address);
-        detailss=findViewById(R.id.edittopic_details);
-        edit_edit=findViewById(R.id.editadd_btn);
-        edit_img=findViewById(R.id.editchoose_image);
-        edit_video=findViewById(R.id.editchoose_video);
+        namee = findViewById(R.id.edittopic_address);
+        detailss = findViewById(R.id.edittopic_details);
+        edit_edit = findViewById(R.id.editadd_btn);
+
+        String title = namee.getText().toString();
+        String details = detailss.getText().toString();
 
 
-
-        String newName = namee.getText().toString();
-        String newDetails = detailss.getText().toString();
-        String newImg = edit_img.getText().toString();
-        String newVideo = edit_video.getText().toString();
-
-        edit_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                update_topic_doc(newName,newDetails,newImg);
-            }
+        edit_edit.setOnClickListener(view ->{
+           // updateUser();
         });
 
+    }
+        public void updateUser(final showDoctor showdoctor) {
 
-
-
-
+            db.collection("DoctorTopics").document(showdoctor.getId()).update(
+                            "topic_address", namee.getText().toString(),
+                            "topic_details",detailss.getText().toString()
+                    )
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("zzz", "DocumentSnapshot successfully updated!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("zzz", "Error updating document", e);
+                        }
+                    });
+        }
 
     }
-
-    public void update_topic_doc(final String name,String details, String img){
-        currentid=firebaseAuth.getCurrentUser().getUid();
-
-        db.collection("Topics").document(currentid)
-                .update("topic_name",namee.getText().toString(),
-                        "topic_content",detailss.getText().toString(),
-                        "topic_image",edit_img.getText().toString())
-
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(Doctor_Update.this,"update successfully", Toast.LENGTH_LONG).show();
-
-//                         db.collection("profile").document(firebaseAuth.getUid())
-//                                 .set(new profile_data(name,email,address,phone));
-
-                        Intent intent=new Intent(Doctor_Update.this,DoctorHome.class);
-                        startActivity(intent);
-
-
-                    }
-                })
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("edit", "DocumentSnapshot successfully updated!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("edit", "Error updating document", e);
-                    }
-                });
-
-    }
-}

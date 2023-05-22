@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Doctor.Doctor_addTopics">
+    tools:context=".Doctor.AddTopicsScreen">
 
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="286dp"
-        android:layout_height="46dp"
+        android:layout_width="283dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:gravity="center_vertical"
         android:text="لاضافة بيانات جديدة .."
@@ -35,8 +35,8 @@
 
     <EditText
         android:id="@+id/topic_address"
-        android:layout_width="310dp"
-        android:layout_height="65dp"
+        android:layout_width="327dp"
+        android:layout_height="66dp"
         android:layout_marginTop="216dp"
         android:background="@drawable/textfield"
         android:ems="10"
@@ -52,13 +52,13 @@
 
     <EditText
         android:id="@+id/topic_details"
-        android:layout_width="300dp"
-        android:layout_height="115dp"
+        android:layout_width="334dp"
+        android:layout_height="112dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/textfield"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="الوصف:"
+        android:inputType="textPersonName"
         android:textColorHint="@color/blue"
         android:textDirection="rtl"
         android:textSize="17sp"
@@ -69,15 +69,16 @@
 
     <Button
         android:id="@+id/add_btn"
-        android:layout_width="170dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="136dp"
+        android:layout_height="45dp"
         android:text="اضافة"
         android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressbar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.911" />
 
     <ImageView
         android:id="@+id/image_add"
@@ -89,24 +90,12 @@
         app:layout_constraintStart_toEndOf="@+id/choose_image"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="15dp"
-        android:visibility="invisible"
-        android:layout_marginEnd="171dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topic_details" />
-
     <VideoView
         android:id="@+id/videoView"
-        android:layout_width="325dp"
-        android:layout_height="122dp"
+        android:layout_width="323dp"
+        android:layout_height="131dp"
         android:layout_marginTop="28dp"
+        android:src="@drawable/img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choose_image" />
@@ -115,8 +104,8 @@
         android:id="@+id/choose_video"
         android:layout_width="190dp"
         android:layout_height="45dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
         android:text="اضغط لاختيار فيديو "
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"

@@ -14,10 +14,7 @@
         android:theme="@style/Theme.FinalApplication"
         tools:targetApi="31">
         <activity
-            android:name=".Doctor_Update"
-            android:exported="false" />
-        <activity
-            android:name=".DoctorProfile"
+            android:name=".ChatDoctor"
             android:exported="false" />
         <activity
             android:name=".Patient.Client_login"
@@ -39,6 +36,12 @@
             android:exported="false" />
         <activity
             android:name=".Patient.Client_registration"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.Doctor_Update"
+            android:exported="false" />
+        <activity
+            android:name=".Doctor.DoctorProfile"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalapplication.Doctor.Doctor_Update;
 import com.example.finalapplication.Module.showDoctor;
 import com.example.finalapplication.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 public class Doctor_Adapter extends RecyclerView.Adapter<Doctor_Adapter.ViewHolder> {
@@ -24,12 +25,15 @@ public class Doctor_Adapter extends RecyclerView.Adapter<Doctor_Adapter.ViewHold
     ArrayList<showDoctor> topicArrayList;
 
     private ItemClickListener mClickListener;
+    private ItemClickListener mClickListener2;
 
-    public Doctor_Adapter(Context context, ArrayList<showDoctor> topicArrayList, ItemClickListener onClick ) {
+    public Doctor_Adapter(Context context, ArrayList<showDoctor> topicArrayList, ItemClickListener onClick,ItemClickListener onClick2 ) {
         this.context = context;
 
         this.topicArrayList = topicArrayList;
+
         this.mClickListener = onClick;
+        this.mClickListener2 = onClick2;
 
 
     }
@@ -46,25 +50,20 @@ public class Doctor_Adapter extends RecyclerView.Adapter<Doctor_Adapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         showDoctor n =topicArrayList.get(position);
         holder.show_name.setText(n.getTitle());
+
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mClickListener.onItemClick(holder.getAdapterPosition(),topicArrayList.get(position).getId());
+                mClickListener.onItemClick(holder.getAdapterPosition(),topicArrayList.get(position).id);
             }
         });
-        //  holder.show_img.setImageURI(uri);
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mClickListener.onItemClick(holder.getAdapterPosition(),topicArrayList.get(position).id);
                 Intent intent = new Intent(context, Doctor_Update.class);
                 context.startActivity(intent);
-
-
-                //   EditClickListener.onItemClick(holder.getAdapterPosition(),topicArrayList.get(position).getId());
-
-
             }
         });
 
@@ -81,7 +80,6 @@ public class Doctor_Adapter extends RecyclerView.Adapter<Doctor_Adapter.ViewHold
         TextView show_name;
         ImageView edit;
         ImageView delete;
-
         CardView show_card;
 
 

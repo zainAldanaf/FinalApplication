@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.finalapplication.R;
-import com.example.finalapplication.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,11 +19,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DoctorProfile extends AppCompatActivity {
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     DatabaseReference ref;
     FirebaseDatabase database;
     FirebaseUser firebaseAuth;
+
     TextView fullname;
     TextView birthdate;
     TextView address1;
@@ -36,31 +37,31 @@ public class DoctorProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
+        setContentView(R.layout.activity_doctor_profile);
+
+        firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
+        fullname= findViewById(R.id.profilename);
+        birthdate= findViewById(R.id.birth_dateprofile);
+        address1= findViewById(R.id.addressprofile);
+        emailaddress= findViewById(R.id.emailprofile);
+        phone_number= findViewById(R.id.phoneprofile);
+        password= findViewById(R.id.password_profile);
 
         uid = firebaseAuth.getUid().toString();
-
-        fullname = findViewById(R.id.profilename);
-        birthdate = findViewById(R.id.birth_dateprofile);
-        address1 = findViewById(R.id.addressprofile);
-        emailaddress =findViewById(R.id.emailprofile);
-        phone_number = findViewById(R.id.phoneprofile);
-        password = findViewById(R.id.password_profile);
-
+        Log.e("TAG", uid);
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Patients");
+        ref = database.getReference("Doctors");
 
         getProfile();
 
-    }
 
-    public  void getProfile(){
+
+    }
+    public void getProfile(){
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                // Iterate through the data and retrieve the values
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String name = snapshot.child("fullname").getValue(String.class);
                     String email = snapshot.child("email").getValue(String.class);
@@ -78,16 +79,12 @@ public class DoctorProfile extends AppCompatActivity {
 
                 }
             }
-
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
+            public void onCancelled(@NonNull DatabaseError error) {
                 Log.w("TAG", "Failed to read value.", error.toException());
             }
+
         });
 
     }
-
 }
-
-

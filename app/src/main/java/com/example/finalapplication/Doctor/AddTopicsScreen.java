@@ -15,6 +15,7 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.finalapplication.Module.DoctorTopicModule;
 import com.example.finalapplication.Module.Topicdoc;
 import com.example.finalapplication.Module.Topics;
 import com.example.finalapplication.R;
@@ -30,10 +31,13 @@ import java.util.Map;
 
 public class AddTopicsScreen extends AppCompatActivity {
 
+
     ImageView imageView;
     VideoView videoView;
     Button Choosevideo;
     Uri videouri;
+
+
     MediaController mediaController;
     Button chooseimage;
     EditText address;
@@ -50,6 +54,7 @@ public class AddTopicsScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_topics_screen);
+
 
         imageView=findViewById(R.id.image_add);
         chooseimage=findViewById(R.id.choose_image);
@@ -81,7 +86,7 @@ public class AddTopicsScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 uploadimage();
-                uploadVideo();
+
 
             }
         });
@@ -105,10 +110,14 @@ public class AddTopicsScreen extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && data != null && data.getData()!= null){
-            imageUri=data.getData();
+            imageUri = data.getData();
+            // Log.w("uri image",uri);
             imageView.setImageURI(imageUri);
 
-        }else if (requestCode == 101 && data != null && data.getData()!= null){
+        }
+
+
+        else if (requestCode == 101 && data != null && data.getData()!= null){
             videouri=data.getData();
             videoView.setVideoURI(videouri);
         }
@@ -121,16 +130,27 @@ public class AddTopicsScreen extends AppCompatActivity {
         storageReference.putFile(videouri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imageView.setImageURI(null);
+                videoView.setVideoURI(null);
 
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
                     @Override
                     public void onSuccess(Uri uri) {
                         String title=address.getText().toString();
+                        String content=cotent.getText().toString();
+                        String image=imageUri.toString();
+                        String video=videouri.toString();
+
 
                         Map<String, Object> user = new HashMap<>();
-                        user.put("title", title.toString());
-                        firebaseFirestore.collection("topicDOC").document().set(
-                                new Topicdoc(title,uri.toString())
+                        user.put("address", title.toString());
+                        user.put("detail", content.toString());
+                        user.put("image",image.toString());
+                        user.put("video",video.toString());
+
+                        firebaseFirestore.collection("DoctorTopic").document().set(
+                                new DoctorTopicModule(image,video,title,content)
                         );
                     }
                 });
@@ -148,24 +168,10 @@ public class AddTopicsScreen extends AppCompatActivity {
         storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                imageView.setImageURI(null);
+                Toast.makeText(AddTopicsScreen.this, "تمت الاضافة بنجاح", Toast.LENGTH_SHORT).show();
 
-                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        String title=address.getText().toString();
-                        String content=cotent.getText().toString();
+                uploadVideo();
 
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("title", title.toString());
-                        user.put("content", content.toString());
-                        firebaseFirestore.collection("Topics").document().set(
-                                new Topics(title,content,uri.toString())
-                        );
-                    }
-                });
-
-                Toast.makeText(AddTopicsScreen.this, "uploaded", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(AddTopicsScreen.this, DoctorHome.class));
 
             }
@@ -177,4 +183,6 @@ public class AddTopicsScreen extends AppCompatActivity {
             }
         });
     }
+
 }
+

@@ -42,16 +42,16 @@ public class DoctorHome extends AppCompatActivity implements Doctor_Adapter.Item
 
         recyclerDoc = findViewById(R.id.recycler_doc);
         topic_items = new ArrayList<showDoctor>();
-        adapterDoc = new Doctor_Adapter(this, topic_items, this);
+        adapterDoc = new Doctor_Adapter(this, topic_items, this,this);
         recyclerDoc.setAdapter(adapterDoc);
 
         // String nn = getIntent().getStringExtra("name");
-        GetNote();
+        GetTopics();
     }
 
-    private void GetNote() {
+    private void GetTopics() {
 
-        db.collection("Topics").get()
+        db.collection("DoctorTopic").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot documentSnapshots) {
@@ -62,12 +62,12 @@ public class DoctorHome extends AppCompatActivity implements Doctor_Adapter.Item
                             for (DocumentSnapshot documentSnapshot : documentSnapshots) {
                                 if (documentSnapshot.exists()) {
                                     String id = documentSnapshot.getId();
-                                    String title = documentSnapshot.getString("topic_name");
-                                    String content = documentSnapshot.getString("topic_content");
-                                    String image = documentSnapshot.getString("image");
+                                    String name = documentSnapshot.getString("topic_address");
+                                    String content = documentSnapshot.getString("topic_details");
+                                    String image = documentSnapshot.getString("topic_img");
 
 
-                                    showDoctor c = new showDoctor(title);
+                                    showDoctor c = new showDoctor(name,id);
                                     topic_items.add(c);
 
                                     recyclerDoc.setLayoutManager(layoutManager);
@@ -95,23 +95,25 @@ public class DoctorHome extends AppCompatActivity implements Doctor_Adapter.Item
 
     public void Delete(final showDoctor showdoctor) {
 
-        db.collection("Topics").document(showdoctor.getTitle())
-                .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        topic_items.remove(showdoctor);
-                        Toast.makeText(DoctorHome.this, " Removed Successfully", Toast.LENGTH_SHORT).show();
+            db.collection("DoctorTopic").document(showdoctor.getId())
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.e("zzz", "deleted");
+                            topic_items.remove(showdoctor);
+                            Toast.makeText(DoctorHome.this, " Removed Successfully", Toast.LENGTH_SHORT).show();
 
-                        adapterDoc.notifyDataSetChanged();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("logData", "get failed with delete");
-                    }
-                });
-    }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("zzz", "fail");
+                        }
+                    });
+        }
+
 
     //option menu
     @Override
@@ -129,6 +131,10 @@ public class DoctorHome extends AppCompatActivity implements Doctor_Adapter.Item
                 return true;
             case R.id.profile:
                 startActivity(new Intent(DoctorHome.this, DoctorProfile.class));
+                return true;
+
+            case R.id.home:
+                startActivity(new Intent(DoctorHome.this, DoctorHome.class));
                 return true;
 
             case R.id.chat:

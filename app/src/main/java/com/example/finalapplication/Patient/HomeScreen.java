@@ -8,8 +8,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import com.example.finalapplication.Fragments.HomeFragment;
-import com.example.finalapplication.Fragments.chatFragment;
+
 import com.example.finalapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,28 +41,8 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        bottomNavigationView=findViewById(R.id.bottom_navigation_view);
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container,new HomeFragment());
-        bottomNavigationView.setSelectedItemId(R.id.home);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment=null;
-                switch (item.getItemId()){
-                    case R.id.home:
-                        fragment=new HomeFragment();
-                        break;
-                    case R.id.chat:
-                        fragment=new chatFragment();
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_container,fragment).commit();
-                return true;
-            }
-        });
-
+        
     }
-
     public void screenTrack(String screenName){
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME,screenName);
